@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <blockquote>
+        <p>うわさのzigを、macで動作手順</p>
+    </blockquote>
+    
+    <pre style="background-color: #f8f8f8; padding: 10px;">
+    <code># install
+    $ brew install zig
+    
+    # 確認
+    $ zig version  
+    </code>
+    </pre>
+    
+    <blockquote>
+        <p>初期化：まだ書き方ゆれてるっぽい。参考にした記事の通りにやってもエラーになった。以下だとできた</p>
+    </blockquote>
+    
+    <pre style="background-color: #f8f8f8; padding: 10px;">
+    <code>$ zig init
+    $ zig build run
+    </code>
+    </pre>
+    
+    <blockquote>
+        <p>src/main.zigを以下に変更する</p>
+    </blockquote>
+    
+    <pre style="background-color: #f8f8f8; padding: 10px;">
+    <code>const std = @import("std");
+    
+    pub fn main() !void {
+    const stdout = std.io.getStdOut().writer();
+    try stdout.print("Hello, {s}!\n", .{"world"});
+    }
+    </code>
+    </pre>
+    
+    <blockquote>
+        <p>実行。これでhello worldまでできたとさ</p>
+    </blockquote>
+    
+    <pre style="background-color: #f8f8f8; padding: 10px;">
+    <code>zig build run
+    </code>
+    </pre>
+    
+    <blockquote>
+        <p>参考</p>
+        <ul>
+            <li><a href="https://zenn.dev/slowhand/articles/88888e94504f27">https://zenn.dev/slowhand/articles/88888e94504f27</a></li>
+            <li><a href="https://zenn.dev/riya_amemiya/articles/956d52e227a023">https://zenn.dev/riya_amemiya/articles/956d52e227a023</a></li>
+        </ul>
+    </blockquote>
+    
+    <table cellpadding="0" cellspacing="0" border="0" style=" border:1px solid #ccc; width:300px;"><tbody><tr style="border-style:none;"><td style="vertical-align:top; border-style:none; padding:10px; width:44px;"><a href="https://rpx.a8.net/svt/ejp?a8mat=3T6FN8+A4DB02+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00rgzi4.2bo11bde.g00rgzi4.2bo127de%2Fa23040745370_3T6FN8_A4DB02_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fpfudirect%252Fpd-kb800bs%252F%26amp%3Bm%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fpfudirect%252Fi%252F10000626%252F%26amp%3Brafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" rel="nofollow"><img border="0" alt="" src="https://thumbnail.image.rakuten.co.jp/@0_mall/pfudirect/cabinet/kb/hhkb/imgrc0081395802.jpg?_ex=64x64" /></a></td><td style="font-size:12px; vertical-align:middle; border-style:none; padding:10px;"><p style="padding:0; margin:0;"><a href="https://rpx.a8.net/svt/ejp?a8mat=3T6FN8+A4DB02+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00rgzi4.2bo11bde.g00rgzi4.2bo127de%2Fa23040745370_3T6FN8_A4DB02_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fpfudirect%252Fpd-kb800bs%252F%26amp%3Bm%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fpfudirect%252Fi%252F10000626%252F%26amp%3Brafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" rel="nofollow">HHKB Professional HYBRID Type-S 英語配列／墨 Bluetooth ワイヤレス キーボード USB 無線/有線両対応 高級 テンキーレス 静音 コンパクト 静電容量無接点 東プレ軸</a></p><p style="color:#666; margin-top:5px line-height:1.5;">価格:<span style="font-size:14px; color:#C00; font-weight:bold;">36850円</span><br/><span style="font-size:10px; font-weight:normal;">(2024/9/23 20:52時点)</span><br/><span style="font-weight:bold;">感想(35件)</span></p></td></tr></tbody></table>
+    <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=3T6FN8+A4DB02+2HOM+BWGDT" alt="">
+</body>
+</html>
