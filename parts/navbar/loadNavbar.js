@@ -1,7 +1,7 @@
 // loadNavbar.js
 
 document.addEventListener("DOMContentLoaded", function () {
-    fetch("navbar.json")
+    fetch("links.json")
         .then(response => response.json())
         .then(data => {
             const navbar = document.getElementById("navbar");
