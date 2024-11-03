@@ -12,3 +12,25 @@
     color: rgb(65, 65, 65);
     font-family: '游ゴシック体';
 }
+
+.header-info{
+    margin: 20px 2vw;
+}
+
+#navbar{
+    padding: 20px 0;
+    nav ul{
+        list-style: none;
+        padding: 0 20px;
+    }
+}
+
+
+.author-info{
+    margin: 20px 2vw;
+    h6{
+        display: inline;
+        padding: 12px;
+        font-size: 16px;
+    }
+}

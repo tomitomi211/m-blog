@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(data => {
             const navbar = document.getElementById("navbar");
+
+            // "関連アーカイブ"の<p>タグを作成して挿入
+            const heading = document.createElement("p");
+            heading.textContent = "関連アーカイブ";
+            heading.style.paddingLeft = "20px"
+            navbar.appendChild(heading);
+
             const navList = document.createElement("ul");
 
             data.forEach(link => {

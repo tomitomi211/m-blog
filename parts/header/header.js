@@ -7,7 +7,8 @@ function loadHeaderInfo() {
 
     // 投稿者情報の見出しを作成
     const heading = document.createElement("h6");
-    heading.innerHTML = 'ウェブツク';
+    heading.innerHTML = 'ともしブログ';
+    heading.style.fontSize = "20px"
 
     // 要素を親コンテナに追加
     headerInfo.appendChild(heading);
