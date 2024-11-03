@@ -7,8 +7,10 @@ function loadHeaderInfo() {
 
     // 投稿者情報の見出しを作成
     const heading = document.createElement("h6");
-    heading.innerHTML = 'ともしブログ';
-    heading.style.fontSize = "20px"
+    heading.innerHTML = '思草文所';
+    heading.style.fontSize = "16px"
+    heading.style.color = "gray"
+    heading.style.fontWeight = "normal"
 
     // 要素を親コンテナに追加
     headerInfo.appendChild(heading);

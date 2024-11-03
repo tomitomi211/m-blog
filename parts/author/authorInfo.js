@@ -17,12 +17,12 @@ function loadAuthorInfo() {
 
     // 投稿者情報の見出しを作成
     const heading = document.createElement("h6");
-    heading.innerHTML = 'Posted by つくる';
+    heading.innerHTML = '書いた人... つくる';
 
     // 投稿者説明を作成
     const description = document.createElement("p");
     description.className = "author-description";
-    description.textContent = "Growed in Fukuoka , Japan. Live in Tokyo. Programer, DTMer, Love Chocolate, running, Reading. 福岡出身です。東京住みです。プログラマ, DTM。チョコレート、ランニング、読書が好きです。";
+    description.textContent = "Growed in Fukuoka , Japan. Live in Tokyo. Programer, DTMer, Love Chocolate, running, Reading. 福岡出身です。東京住みです。プログラマ, DTM。チョコレート、ランニング、読書、ラジオが好きです。";
 
     // 要素を親コンテナに追加
     authorInfo.appendChild(avatar);
