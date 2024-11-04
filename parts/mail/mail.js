@@ -13,8 +13,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     // フォームのHTMLを挿入
     const formHTML = `
-        <form id="contactForm" style="display:flex; flex-flow:column; width:400px; font-size:0.9em; padding-left:20px;">
-            <label>何かあれば、仕事依頼など：</label>
+        <form id="contactForm" style="display:flex; flex-flow:column; width:400px; font-size:0.9em; padding-left:20px; margin-top:40px;">
+            <label>何かあれば。コメント、仕事依頼など：</label>
             <label>お名前</label>
             <input type="text" name="user_name" placeholder="Your Name" required>
             <label>メールアドレス(返信希望の場合のみ、なくても大丈夫です。)</label>
