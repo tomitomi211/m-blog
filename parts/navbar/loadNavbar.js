@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
             navbar.appendChild(heading);
 
             const navList = document.createElement("ul");
+            navList.style.fontSize="0.9em";
 
             data.forEach(link => {
                 const listItem = document.createElement("li");
