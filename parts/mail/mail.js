@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <input type="email" name="user_email" placeholder="Your Email" required>
             <label>コメント</label>
             <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit" style="margin-top:8px;">Send</button>
+            <button type="submit" style="margin-top:8px; margin-bottom:20px;">Send</button>
         </form>
     `;
     document.body.insertAdjacentHTML("beforeend", formHTML);
