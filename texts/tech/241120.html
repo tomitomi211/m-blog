@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>トーンJSお試し...... 1/N</title> <!-- 01 documentタイトルを更新する 1~5からあります-->
+    <link rel="stylesheet" href="../../main.css" type="text/css">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RN2EKK8CZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RN2EKK8CZ7');
+</script>
+
+<body>
+    <div class="contents">
+        <!-- ナビゲーション -->
+        <h3>
+            トーンJSお試し...... 1/N
+        </h3>
+        <p>
+            Tone.jsを使って簡単なサンプルを作成します。
+        </p>
+        <p>
+            Tone.jsはWeb Audio APIを簡単に操作できるライブラリで、音楽や音の合成を行うために非常に便利です
+        </p>
+        <p>
+            以下のコードは、Tone.jsを使ってシンセサイザーで音を鳴らす簡単な例です。
+        </p>
+        <h4>
+            1. HTMLファイルを作成
+        </h4>
+        <p>
+            まず、HTMLファイルを作成して、Tone.jsライブラリを読み込みます。CDNを使って簡単にTone.jsをインクルードできます。
+        </p>
+        <pre>
+            &lt;!DOCTYPE html&gt;
+            &lt;html lang="en"&gt;
+            &lt;head&gt;
+                &lt;meta charset=&quot;UTF-8&quot;&gt;
+                &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+                &lt;title&gt;Tone.js Simple Example&lt;/title&gt;
+                &lt;script src=&quot;https://cdn.jsdelivr.net/npm/tone@14.8.28/build/Tone.js&quot;&gt;&lt;/script&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                &lt;h1&gt;Tone.js Simple Example&lt;/h1&gt;
+                &lt;button id=&quot;playButton&quot;&gt;Play Sound&lt;/button&gt;
+            
+                &lt;script&gt;
+                    // Tone.jsのシンセサイザーを作成
+                    const synth = new Tone.Synth().toDestination();
+            
+                    // ボタンがクリックされたときに音を鳴らす
+                    document.getElementById(&quot;playButton&quot;).addEventListener(&quot;click&quot;, () =&gt; {
+                        synth.triggerAttackRelease(&quot;C4&quot;, &quot;8n&quot;); // C4の音を8分音符で鳴らす
+                    });
+                &lt;/script&gt;
+            &lt;/body&gt;
+            &lt;/html&gt;
+        </pre>
+            
+        
+        <h4>
+            2.説明
+        </h4>
+        
+        <div>
+            <pre>
+                1. <strong>Tone.jsのインクルード</strong>:
+                   &lt;script src=&quot;https://cdn.jsdelivr.net/npm/tone@14.8.28/build/Tone.js&quot;&gt;&lt;/script&gt; の部分で、Tone.jsをCDN経由で読み込みます。
+                
+                2. <strong>シンセサイザーの作成</strong>:
+                   <code>const synth = new Tone.Synth().toDestination();</code> で、シンセサイザーオブジェクトを作成し、
+                   音の出力先（<code>toDestination()</code>）をデフォルトのオーディオ出力（スピーカー）に設定します。
+                
+                3. <strong>ボタンをクリックで音を鳴らす</strong>:
+                   ボタンをクリックすると、<code>synth.triggerAttackRelease(&quot;C4&quot;, &quot;8n&quot;);</code> で、C4の音（中央のド）を8分音符の長さで鳴らします。
+
+            </pre>
+        </div>
+
+        <h4>
+            以下が実際に、このhtmlで動作するサンプルです
+        </h4>
+            <div>
+                <script src="https://cdn.jsdelivr.net/npm/tone@14.8.28/build/Tone.js"></script>
+                <h1>Tone.js Simple Example</h1>
+                <button id="playButton">Play Sound</button>
+            
+                <script>
+                    // Tone.jsのシンセサイザーを作成
+                    const synth = new Tone.Synth().toDestination();
+            
+                    // ボタンがクリックされたときに音を鳴らす
+                    document.getElementById("playButton").addEventListener("click", () => {
+                        synth.triggerAttackRelease("C4", "8n"); // C4の音を8分音符で鳴らす
+                    });
+                </script>
+            </div>
+
+            <p>
+                どうですか？
+            </p>
+            <p>
+                音聞こえましたか？
+            </p>
+            <p>
+                次は簡単な曲をつくってみようと思います
+            </p>
+
+        <!-- 04 広告を更新 -->
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" style=" border:1px solid #ccc; width:300px;"><tbody><tr style="border-style:none;"><td style="vertical-align:top; border-style:none; padding:10px; width:44px;"><a href="https://rpx.a8.net/svt/ejp?a8mat=3T6FN8+A4DB02+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00uiob4.2bo11aec.g00uiob4.2bo1213b%2Fa23040745370_3T6FN8_A4DB02_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Ftrend-tech%252F0659359808432%252F%26amp%3Bm%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Ftrend-tech%252Fi%252F10009018%252F%26amp%3Brafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" rel="nofollow"><img border="0" alt="" src="https://thumbnail.image.rakuten.co.jp/@0_mall/trend-tech/cabinet/item/16/0658865293367_thumb.jpg?_ex=64x64" /></a></td><td style="font-size:12px; vertical-align:middle; border-style:none; padding:10px;"><p style="padding:0; margin:0;"><a href="https://rpx.a8.net/svt/ejp?a8mat=3T6FN8+A4DB02+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00uiob4.2bo11aec.g00uiob4.2bo1213b%2Fa23040745370_3T6FN8_A4DB02_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Ftrend-tech%252F0659359808432%252F%26amp%3Bm%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Ftrend-tech%252Fi%252F10009018%252F%26amp%3Brafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" rel="nofollow">【サポート安心正規品】 AI ボイスレコーダー PLAUD NOTE ChatGPT連携 64GB プラウドノート 会議 議事録 インタビュー ボイスメモ 録音 文字起こし 要約 GPT-4o OpenAI aiボイスレコーダー アンドロイド ipad iphone 公式販売店 正規代理店</a></p><p style="color:#666; margin-top:5px line-height:1.5;">価格:<span style="font-size:14px; color:#C00; font-weight:bold;">27500円</span><br/><span style="font-size:10px; font-weight:normal;">(2024/11/24 19:57時点)</span><br/><span style="font-weight:bold;">感想(27件)</span></p></td></tr></tbody></table>
+            <img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=3T6FN8+A4DB02+2HOM+BWGDT" alt="">
+    </div>
+
+    <!-- 05 links.jsonを更新 -->
+
+    <!-- 投稿者情報 -->
+    <div id="author-info"></div>
+    <script src="../../parts/author/authorInfo.js"></script>
+
+    <!-- リンクリスト -->
+    <div id="navbar"></div>
+    <script src="../../parts/navbar/loadNavbar.js"></script>
+
+    <!-- contact.js を読み込む -->
+    <script src="../../parts/mail/mail.js"></script>
+</body>
+</html>

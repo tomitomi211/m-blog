@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拡張子のsoについて</title>
+    <link rel="stylesheet" href="../../main.css" type="text/css">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RN2EKK8CZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RN2EKK8CZ7');
+</script>
+
+<body>
+    <div class="contents">
+        <!-- ナビゲーション -->
+        <div id="header-info"></div>
+        <script src="../../parts/header/header.js"></script>
+        
+        <h6>241118</h6> <!-- 01　記載日を記載、更新した場合は更新日:yymmddで記載 -->
+        <h3>拡張子のsoについて</h3> <!-- 02 タイトル-->
+        <!-- 03 titleタグを更新する -->
+
+   
+        <p>
+
+            soは、LinuxやUnix系のオペレーティングシステムにおいて使用される、<br>
+            共有ライブラリ（Shared Object）のファイル拡張子です。
+            <br>
+            共有ライブラリは、プログラムが実行時に必要な機能を動的に読み込んで使用するためのライブラリです。
+            
+            <h3>動的読み込み（Dynamic Linking）と静的読み込み（Static Linking）の違い</h3>
+            
+            <h4>動的読み込み（Dynamic Linking）</h4>
+            <ul>
+                <li>
+                    プログラムの実行時に、必要なライブラリ（例えば、`libexample.so`など）をシステムから読み込んで使用します。
+                </li>
+                <li>
+                    これにより、同じライブラリを複数のプログラムが共有して使用でき、メモリの効率が良くなります。
+                </li>
+                <li>
+                    共有ライブラリ（`.so`ファイル）は、プログラムが起動する際にリンクされ、実行中に読み込まれます。
+                </li>
+            </ul>
+            <h4>
+                静的読み込み（Static Linking）
+            </h4>
+                <ul>
+                    <li>
+                        プログラムをコンパイルする際に、必要なライブラリをあらかじめバイナリに組み込む方式です。
+                    </li>
+                    <li>
+                        実行時に外部のライブラリファイルを必要とせず、バイナリが独立していますが、ライブラリの更新があった場合、再コンパイルが必要になります。
+                    </li>
+                </ul>
+            
+            <h4>いったんまとめ</h4>
+                <li>
+                    so（Shared Object）は、動的リンクで使用されるライブラリファイルであり、
+                </li>
+                <li>
+                    プログラムが実行時に必要な機能を外部から読み込んで使用するために利用されます。
+                </li>
+                <li>
+                    これにより、効率的なメモリ使用やライブラリの再利用が可能となります。
+                </li>
+            
+            <h3>
+                自分で共有ライブラリ（.soファイル）を作成するための簡単なサンプルを以下に示します。
+            </h3>
+            
+            
+            <h4>
+                1. まず、共有ライブラリに含める関数を定義したC言語のソースコードを作成します。
+            </h4>
+            <pre><code>
+                #include &lt;stdio.h&gt; 
+                void hello() { 
+                    printf("Hello from shared library!\n"); 
+                } 
+            </code></pre>
+            <p>
+                上記の内容のcのソースコードを、hello.c という名前で作成しました。
+            </p>
+
+            <h4>
+                2. 共有ライブラリ（.so）をコンパイル
+            </h4>
+            <pre><code>
+                gcc -fPIC -shared -o libhello.so hello.c 
+            </code></pre>
+            <p>
+                -fPIC は「Position Independent Code」を意味し、共有ライブラリを作成するために必要なオプションです。
+            </p>
+            <p>
+                -shared は共有ライブラリを生成するためのオプションです。
+            </p>
+            <p>
+                -o libhello.so は出力ファイル名を libhello.so に指定しています。
+            </p>
+            <p>
+                これにより、カレントディレクトリに libhello.so というファイルが生成されます。
+                実際にlsすると生成されていることが手元で確認できました。
+            </p>
+            
+            <h4>
+                3. 共有ライブラリを使うアプリケーションを作成
+            </h4>
+            <p>
+                次に、この共有ライブラリを使う簡単なCプログラムを作成します。
+                main.cという名前で。
+            </p>
+            <pre><code>
+                // main.c 
+                #include &lt;stdio.h&gt;&lt;/stdio.h&gt;
+
+                // 共有ライブラリ内の関数を宣言
+                void hello(); 
+                int main() {
+                    // 共有ライブラリ内の関数を呼び出し 
+                    hello(); 
+                    return 0; 
+                }
+            </code></pre>
+            <h4>
+                4. プログラムをコンパイル
+            </h4>
+            <p>
+                次に、このプログラムをコンパイルして実行可能ファイルを作成します。
+            </p>
+            <p>
+                -L オプションでライブラリのパスを指定し、-l オプションで使用するライブラリを指定します。
+            </p>
+            <pre><code>
+                gcc -o main main.c -L. -lhello 
+            </code></pre>
+            <h4>
+                5. 実行
+            </h4>
+            <p>
+                最後に、実行する前に、ライブラリを正しく読み込むために LD_LIBRARY_PATH を設定します。
+            </p>
+            <pre><code>
+                export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH 
+            </code></pre>
+            <p>
+                これで、プログラムを実行できます。
+            </p>
+            <pre><code>
+                ./main 
+            </code></pre>
+            <p>
+                実行結果は以下
+            </p>
+            <pre><code>
+                Hello from shared library! 
+            </code></pre>
+            <p>
+                これで、libhello.so という共有ライブラリを作成し、main.c からそのライブラリを動的に読み込んで使用するプログラムが完成しました。
+            </p>
+            
+            
+        <!-- 04 広告を更新 -->
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" style=" border:1px solid #ccc; width:300px;"><tbody><tr style="border-style:none;"><td style="vertical-align:top; border-style:none; padding:10px; width:44px;"><a href="https://rpx.a8.net/svt/ejp?a8mat=3T6FN8+A4DB02+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa23040745370_3T6FN8_A4DB02_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F16800701%252F%26amp%3Bm%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F20402632%252F%26amp%3Brafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" rel="nofollow"><img border="0" alt="" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/9795/9784815609795_1_3.jpg?_ex=64x64" /></a></td><td style="font-size:12px; vertical-align:middle; border-style:none; padding:10px;"><p style="padding:0; margin:0;"><a href="https://rpx.a8.net/svt/ejp?a8mat=3T6FN8+A4DB02+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa23040745370_3T6FN8_A4DB02_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F16800701%252F%26amp%3Bm%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F20402632%252F%26amp%3Brafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" rel="nofollow">新・明解C言語 入門編 第2版 [ 柴田望洋 ]</a></p><p style="color:#666; margin-top:5px line-height:1.5;">価格:<span style="font-size:14px; color:#C00; font-weight:bold;">2530円</span><br/><span style="font-size:10px; font-weight:normal;">(2024/11/24 19:44時点)</span><br/><span style="font-weight:bold;">感想(2件)</span></p></td></tr></tbody></table>
+            <img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=3T6FN8+A4DB02+2HOM+BWGDT" alt="">
+    </div>
+
+    <!-- 05 links.jsonを更新 -->
+
+    <!-- 投稿者情報 -->
+    <div id="author-info"></div>
+    <script src="../../parts/author/authorInfo.js"></script>
+
+    <!-- リンクリスト -->
+    <div id="navbar"></div>
+    <script src="../../parts/navbar/loadNavbar.js"></script>
+
+    <!-- contact.js を読み込む -->
+    <script src="../../parts/mail/mail.js"></script>
+</body>
+</html>
