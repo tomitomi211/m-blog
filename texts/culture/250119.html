@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust製のTauriを調べるandハロワまで</title>
+    <link rel="stylesheet" href="../../main.css" type="text/css">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RN2EKK8CZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RN2EKK8CZ7');
+</script>
+
+<body>
+    <div class="contents">
+        <!-- ナビゲーション -->
+        <div id="header-info"></div>
+        <script src="../../parts/header/header.js"></script>
+        
+        <h6>250119</h6> <!-- 01　記載日を記載、更新した場合は更新日:yymmddで記載 -->
+        <h3>Rust製のTauriを調べる & ハロワまで</h3> <!-- 02 タイトル-->
+        <!-- 03 titleタグを更新する -->
+
+<pre>
+Tauriの概要
+- TauriはRustベースのデスクトップアプリケーション開発フレームワーク
+- 軽量でセキュアなクロスプラットフォームのデスクトップアプリ開発に向いている
+
+特徴
+- 非常に小さなバイナリサイズで実現可能
+- Electoronに比べて大きなランタイムを含まない
+- クロスプラットフォーム : win, mac, linuxで動作する
+- フロントエンドは任意のwebフレームワークを使用できる
+
+公式サイト
+- https://tauri.app/
+
+
+
+TauriのHello worldまでの手順
+①ひとまずRustを入れるところから
+Rustを入れる
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+. "$HOME/.cargo/env" (上記を実行したらこのパスも通せと言われる)
+
+Rustとcargoが入ったか確認
+rustc --version
+cargo --version
+->
+rustc 1.84.0 (9fc6b4312 2025-01-07)
+cargo 1.84.0 (66221abde 2024-11-19)
+で入ってるのを確認した。
+
+Tauriのコマンドを入れる
+cargo install tauri-cli
+echo 'export PATH="$HOME/.cargo/bin:$PATH"' >> ~/.zshrc
+
+Viteを入れる
+npm install vite --save-dev
+
+②やっとTauriを入れる
+npm create tauri-app
+を実行してyesを連打
+
+npm run tauri dev 
+これでGUIを起動
+
+
+------------------------
+  welcome to tauri!
+
+
+  |      | greet !
+------------------------
+
+みたいなウィンドウが出たらOK！
+
+
+</pre>
+
+
+
+        <!-- 04 広告を更新 -->
+        <div>
+            <table cellpadding="0" cellspacing="0" border="0" style=" border:1px solid #ccc; width:300px;"><tbody><tr style="border-style:none;"><td style="vertical-align:top; border-style:none; padding:10px; width:44px;"><a href="https://rpx.a8.net/svt/ejp?a8mat=3T6FN8+A4DB02+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa23040745370_3T6FN8_A4DB02_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F16980295%252F%26amp%3Bm%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F20537477%252F%26amp%3Brafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" rel="nofollow"><img border="0" alt="" src="https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/9786/9784873119786_1_3.jpg?_ex=64x64" /></a></td><td style="font-size:12px; vertical-align:middle; border-style:none; padding:10px;"><p style="padding:0; margin:0;"><a href="https://rpx.a8.net/svt/ejp?a8mat=3T6FN8+A4DB02+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa23040745370_3T6FN8_A4DB02_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F16980295%252F%26amp%3Bm%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F20537477%252F%26amp%3Brafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" rel="nofollow">プログラミングRust 第2版 [ Jim Blandy ]</a></p><p style="color:#666; margin-top:5px line-height:1.5;">価格:<span style="font-size:14px; color:#C00; font-weight:bold;">5280円</span><br/><span style="font-size:10px; font-weight:normal;">(2025/1/21 16:02時点)</span><br/><span style="font-weight:bold;">感想(0件)</span></p></td></tr></tbody></table>
+            <img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=3T6FN8+A4DB02+2HOM+BWGDT" alt="">
+    </div>
+
+    <!-- 05 links.jsonを更新 -->
+
+    <!-- 投稿者情報 -->
+    <div id="author-info"></div>
+    <script src="../../parts/author/authorInfo.js"></script>
+
+    <!-- リンクリスト -->
+    <div id="navbar"></div>
+    <script src="../../parts/navbar/loadNavbar.js"></script>
+
+    <!-- contact.js を読み込む -->
+    <script src="../../parts/mail/mail.js"></script>
+</body>
+</html>
