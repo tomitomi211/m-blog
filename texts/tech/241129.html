@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>___</title> <!-- 01 documentタイトルを更新する 1~5からあります-->
+    <link rel="stylesheet" href="../../main.css" type="text/css">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RN2EKK8CZ7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RN2EKK8CZ7');
+</script>
+
+<body>
+    <div class="contents">
+        <!-- ナビゲーション -->
+        <h3>
+            ___
+        </h3>
+<div>
+    2411_01 macでcronを簡単に試す
+
+
+    macではデフォルトでcronが起動している。
+    
+    以下のコマンドで確認することができる
+    
+    sudo launchctl load -w /System/Library/LaunchDaemons/com.vix.cron.plist
+    
+    
+    
+    crontab -e
+    
+    
+    
+    フォーマット
+    
+    スケジュールとコマンドを記述
+    ファイルの中に以下の形式でスケジュールを記述します：
+    
+    markdown
+    
+    コードをコピーする
+    
+    * * * * * コマンド
+    
+    各フィールドの意味：
+    
+    * (分): 0–59
+    
+    * (時): 0–23
+    
+    * (日): 1–31
+    
+    * (月): 1–12
+    
+    
+    実際に打ち込んでみる
+    
+    毎日午前3時に/Users/username/backup.shを実行する場合：
+    
+    bash
+    
+    コードをコピーする
+    
+    0 3 * * * /Users/username/backup.sh
+    
+    5. 実行結果の確認
+    
+    cronジョブの実行結果は、デフォルトではメールで通知されますが、macOSではローカルメール設定が利用されない場合が多いです。そのため、標準出力とエラー出力をログにリダイレクトすると便利です。
+    
+    例：ログファイルに出力する設定：
+    
+    bash
+    
+    コードをコピーする
+    
+    0 3 * * * /Users/username/backup.sh >> /Users/username/backup.log 2>&1
+    
+    
+    >> /Users/username/backup.log は標準出力をログファイルに追記。
+    
+    2>&1 はエラー出力も同じログファイルにリダイレクト。
+    
+    
+    
+    
+    cronってメールに通知するのは、世界的に標準なことなの？
+    
+    ChatGPT:
+    
+    ChatGPT
+    
+    はい、cronがジョブを実行した結果をメールで通知する仕組みは、歴史的・技術的な理由からUNIX系システムの標準的な動作とされています。ただし、この機能が必ず有効になっているか、または利用されているかはシステムや環境によって異なります。
+    
+    1. cronがメールを送信する理由
+    
+    a. ジョブの出力結果を通知
+    
+    cronはバックグラウンドで実行されるため、標準出力（stdout）やエラー出力（stderr）が通常のターミナルに表示されません。これらの出力をユーザーに通知するためにメールが利用されています。
+    
+    例：
+    
+    正常に実行された場合、出力を確認できます。
+    
+    エラーが発生した場合、エラーメッセージを確認できます。
+    
+    b. cronの設計思想
+    
+    UNIXシステムの初期設計では、システム管理者やユーザーがリモートサーバー上のタスクを追跡する必要があり、メール通知はそのための便利な手段でした。
+    
+    特にインターネット以前の時代では、メールは通知手段として主要な方法の1つでした。
+    
+    2. メール通知の仕組み
+    
+    a. 通知の基本動作
+    
+    cronは、ジョブの出力を一時的に保存し、それをシステムのローカルメール送信エージェント（MTA: Mail Transfer Agent）を通じてユーザーに送信します。
+    
+    デフォルトではsendmailやpostfixなどが利用されることが多いです。
+    
+    b. メール通知が送られる条件
+    
+    標準出力（stdout）や標準エラー出力（stderr）がある場合にのみ通知されます。
+    
+    >/dev/null を使って出力を無効化すると通知されません。
+    
+    3. メール通知の現在の利用状況
+    
+    a. 現在でも標準的な動作
+    
+    多くのUNIX系システム（Linux、BSD、macOS）でcronのメール通知は有効です。ただし、システムやディストリビューションによっては、メール送信エージェント（MTA）がインストールされていない場合があります。
+    
+    macOSのようなデスクトップ環境では、ローカルメールを設定しない場合が多く、この通知が実際には利用されないケースもあります。
+    
+    b. クラウド時代の代替通知
+    
+    最近では、メール以外の通知方法（例: ログファイルへのリダイレクト、Slack通知、Webhook）を利用することが一般的です。
+    
+    DevOpsやクラウドインフラでは、cronの代わりにsystemdタイマーや専用のスケジューリングツール（例: AWS Lambda、Kubernetes CronJob）が使われることも多いです。
+    
+    4. メール通知を無効化する方法
+    
+    a. ログに出力をリダイレクト
+    
+    出力をファイルに記録するか、/dev/nullに捨てることでメール通知を抑制できます。
+    
+    例1: ログファイルに出力
+    
+    bash
+    
+    コードをコピーする
+    
+    * * * * * /path/to/script.sh >> /path/to/logfile.log 2>&1
+    
+    
+    例2: 出力を捨てる
+    
+    bash
+    
+    コードをコピーする
+    
+    * * * * * /path/to/script.sh > /dev/null 2>&1
+    
+    
+    b. 環境変数で抑制
+    
+    crontabの冒頭に以下を追加して、通知先メールアドレスを空に設定します：
+    
+    bash
+    
+    コードをコピーする
+    
+    MAILTO=""
+    
+    
+    5. 現代の観点での評価
+    
+    メリット:
+    
+    エラー通知や結果確認に便利であるため、システム管理者やバックエンドのタスク実行において有用です。
+    
+    メール送信が適切に設定されている環境では、すぐに結果を受け取れます。
+    
+    デメリット:
+    
+    設定が複雑になりがち（特にローカルメールサーバーが必要な場合）。
+    
+    モダンな通知手段に比べて柔軟性が低い。
+    
+    まとめ
+    
+    cronのメール通知は、歴史的背景からUNIX系システムの標準的な機能として採用されています。ただし、現代では他の通知手段が利用されることが多いため、必要に応じてログリダイレクトや外部通知システムに切り替えるのが一般的です。
+    
+    
+</div>
+
+        <!-- 04 広告を更新 -->
+        <div id="ad_raku">
+            <table cellpadding="0" cellspacing="0" border="0" style=" border:1px solid #ccc; width:300px;"><tbody><tr style="border-style:none;"><td style="vertical-align:top; border-style:none; padding:10px; width:44px;"><a href="https://rpx.a8.net/svt/ejp?a8mat=3T6FN8+A4DB02+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00uiob4.2bo11aec.g00uiob4.2bo1213b%2Fa23040745370_3T6FN8_A4DB02_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Ftrend-tech%252F0659359808432%252F%26amp%3Bm%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Ftrend-tech%252Fi%252F10009018%252F%26amp%3Brafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" rel="nofollow"><img border="0" alt="" src="https://thumbnail.image.rakuten.co.jp/@0_mall/trend-tech/cabinet/item/16/0658865293367_thumb.jpg?_ex=64x64" /></a></td><td style="font-size:12px; vertical-align:middle; border-style:none; padding:10px;"><p style="padding:0; margin:0;"><a href="https://rpx.a8.net/svt/ejp?a8mat=3T6FN8+A4DB02+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00uiob4.2bo11aec.g00uiob4.2bo1213b%2Fa23040745370_3T6FN8_A4DB02_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Ftrend-tech%252F0659359808432%252F%26amp%3Bm%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Ftrend-tech%252Fi%252F10009018%252F%26amp%3Brafcid%3Dwsc_i_is_33f72da33714639c415e592c9633ecd7" rel="nofollow">【サポート安心正規品】 AI ボイスレコーダー PLAUD NOTE ChatGPT連携 64GB プラウドノート 会議 議事録 インタビュー ボイスメモ 録音 文字起こし 要約 GPT-4o OpenAI aiボイスレコーダー アンドロイド ipad iphone 公式販売店 正規代理店</a></p><p style="color:#666; margin-top:5px line-height:1.5;">価格:<span style="font-size:14px; color:#C00; font-weight:bold;">27500円</span><br/><span style="font-size:10px; font-weight:normal;">(2024/11/24 19:57時点)</span><br/><span style="font-weight:bold;">感想(27件)</span></p></td></tr></tbody></table>
+            <img border="0" width="1" height="1" src="https://www18.a8.net/0.gif?a8mat=3T6FN8+A4DB02+2HOM+BWGDT" alt="">
+    </div>
+
+    <!-- 05 links.jsonを更新 -->
+
+    <!-- 投稿者情報 -->
+    <div id="author-info"></div>
+    <script src="../../parts/author/authorInfo.js"></script>
+
+    <!-- リンクリスト -->
+    <div id="navbar"></div>
+    <script src="../../parts/navbar/loadNavbar.js"></script>
+
+    <!-- contact.js を読み込む -->
+    <script src="../../parts/mail/mail.js"></script>
+</body>
+</html>
